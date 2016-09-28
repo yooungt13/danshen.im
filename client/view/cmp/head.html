@@ -1,4 +1,4 @@
-<title>{{ title || 'Hello WWF' }}</title>
+<title>{{ title || '爱上我科技' }}</title>
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-touch-fullscreen" content="yes">
@@ -14,3 +14,22 @@
 <link rel="stylesheet" type="text/css" href="{{GLOBAL.STATIC_HOST}}/css/{{style}}"/>
 {% endfor %}
 {% endif %}
+
+<script type="text/javascript">
+    //根据屏幕大小及dpi调整缩放和大小
+    (function() {
+        var scale = 1.0;
+        var ratio = 1;
+
+        var ua = navigator.userAgent;
+        var isChrome = ua.match(/Chrome\/([\d.]+)/) || ua.match(/CriOS\/([\d.]+)/);
+
+        if (window.devicePixelRatio >= 2 && !isChrome) {
+            scale *= 0.5;
+            ratio *= 2;
+        }
+        var text = '<meta name="viewport" content="initial-scale=' + scale + ', maximum-scale=' + scale +', minimum-scale=' + scale + ', width=device-width, user-scalable=no" />';
+        document.write(text);
+        document.documentElement.style.fontSize = 50*ratio + "px";
+    })();
+</script>
